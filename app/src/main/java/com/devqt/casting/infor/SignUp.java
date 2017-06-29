@@ -20,49 +20,33 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 
-public class LogIn extends AppCompatActivity {
+public class SignUp extends AppCompatActivity {
 
     private EditText inputEmail, inputPassword;
-    private FirebaseAuth auth;
+    private Button btnSignIn, btnSignUp, btnResetPassword;
     private ProgressBar progressBar;
-    private Button btnSignup, btnLogin, btnReset;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-        auth = FirebaseAuth.getInstance();
-
-        if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(LogIn.this, MainMenu.class));
-            finish();
-        }
-
-
-        setContentView(R.layout.log_in);
+        setContentView(R.layout.sign_up);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        inputEmail = (EditText) findViewById(R.id.email);
-        inputPassword = (EditText) findViewById(R.id.password);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        btnSignup = (Button) findViewById(R.id.btn_signup);
-        btnLogin = (Button) findViewById(R.id.btn_login);
-        btnReset = (Button) findViewById(R.id.btn_reset_password);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         auth = FirebaseAuth.getInstance();
 
-        btnSignup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LogIn.this, SignUp.class));
-            }
-        });
+        btnSignIn = (Button) findViewById(R.id.sign_in_button);
+        btnSignUp = (Button) findViewById(R.id.sign_up_button);
+        inputEmail = (EditText) findViewById(R.id.email);
+        inputPassword = (EditText) findViewById(R.id.password);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        btnResetPassword = (Button) findViewById(R.id.btn_reset_password);
 
-        btnReset.setOnClickListener(new View.OnClickListener() {
+        btnResetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 resetPassword();
@@ -70,11 +54,19 @@ public class LogIn extends AppCompatActivity {
             }
         });
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = inputEmail.getText().toString();
-                final String password = inputPassword.getText().toString();
+                finish();
+            }
+        });
+
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String email = inputEmail.getText().toString().trim();
+                String password = inputPassword.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
@@ -86,32 +78,35 @@ public class LogIn extends AppCompatActivity {
                     return;
                 }
 
-                progressBar.setVisibility(View.VISIBLE);
+                if (password.length() < 6) {
+                    Toast.makeText(getApplicationContext(), "Password too short, enter minimum 6 characters!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
-                auth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(LogIn.this, new OnCompleteListener<AuthResult>() {
+                progressBar.setVisibility(View.VISIBLE);
+                //create user
+                auth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-
+                                Toast.makeText(SignUp.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);
+                                // If sign in fails, display a message to the user. If sign in succeeds
+                                // the auth state listener will be notified and logic to handle the
+                                // signed in user can be handled in the listener.
                                 if (!task.isSuccessful()) {
-
-                                    if (password.length() < 6) {
-                                        inputPassword.setError(getString(R.string.minimum_password));
-                                    } else {
-                                        Toast.makeText(LogIn.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
-                                    }
+                                    Toast.makeText(SignUp.this, "Authentication failed." + task.getException(),
+                                            Toast.LENGTH_SHORT).show();
                                 } else {
-                                    Intent intent = new Intent(LogIn.this, MainMenu.class);
-                                    startActivity(intent);
+                                    startActivity(new Intent(SignUp.this, Profile.class));
                                     finish();
                                 }
                             }
                         });
+
             }
         });
     }
-
     private void resetPassword() {
         final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
@@ -122,7 +117,7 @@ public class LogIn extends AppCompatActivity {
         final Button btnReset = (Button) dialogView.findViewById(R.id.btn_reset_password);
         final ProgressBar progressBar1 = (ProgressBar) dialogView.findViewById(R.id.progressBar);
 
-
+        //dialogBuilder.setTitle("Send Photos");
         final AlertDialog dialog = dialogBuilder.create();
 
         btnReset.setOnClickListener(new View.OnClickListener() {
@@ -140,9 +135,9 @@ public class LogIn extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(LogIn.this, "We have send you instructions to reset your password!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(SignUp.this, "We have sent you instructions to reset your password!", Toast.LENGTH_SHORT).show();
                                 } else {
-                                    Toast.makeText(LogIn.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(SignUp.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();
                                 }
 
                                 progressBar1.setVisibility(View.GONE);
@@ -153,5 +148,11 @@ public class LogIn extends AppCompatActivity {
             }
         });
         dialog.show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        progressBar.setVisibility(View.GONE);
     }
 }
