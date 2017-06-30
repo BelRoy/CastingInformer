@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "923888203389",
+    "firebase_url": "https://mob-actor-agensy.firebaseio.com",
+    "project_id": "mob-actor-agensy",
+    "storage_bucket": "mob-actor-agensy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:923888203389:android:9c727af9ceba85b8",
+        "android_client_info": {
+          "package_name": "com.devqt.casting.infor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "923888203389-41c6f351idhpdudaruo2m1birdl6c7h0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.devqt.casting.infor",
+            "certificate_hash": "794d5c207d97743e6d34eaa94d26a4b9f22904eb"
+          }
+        },
+        {
+          "client_id": "923888203389-g9sk7g1c8ue0livbelo0f7qo5vk7ao55.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArFuSo8FwpVZeWVEaQQhEBlZbJT3IJ3nw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "923888203389-g9sk7g1c8ue0livbelo0f7qo5vk7ao55.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
