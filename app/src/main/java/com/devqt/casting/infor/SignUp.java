@@ -32,9 +32,9 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+       /* Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
 
 
         auth = FirebaseAuth.getInstance();

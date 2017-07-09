@@ -20,7 +20,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 
-public class LogIn extends AppCompatActivity {
+public class Login extends AppCompatActivity {
 
     private EditText inputEmail, inputPassword;
     private FirebaseAuth auth;
@@ -35,15 +35,15 @@ public class LogIn extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
         if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(LogIn.this, MainMenu.class));
+            startActivity(new Intent(Login.this, MainMenu.class));
             finish();
         }
 
 
         setContentView(R.layout.log_in);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
@@ -58,7 +58,7 @@ public class LogIn extends AppCompatActivity {
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LogIn.this, SignUp.class));
+                startActivity(new Intent(Login.this, SignUp.class));
             }
         });
 
@@ -89,7 +89,7 @@ public class LogIn extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
 
                 auth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(LogIn.this, new OnCompleteListener<AuthResult>() {
+                        .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
 
@@ -99,10 +99,10 @@ public class LogIn extends AppCompatActivity {
                                     if (password.length() < 6) {
                                         inputPassword.setError(getString(R.string.minimum_password));
                                     } else {
-                                        Toast.makeText(LogIn.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
+                                        Toast.makeText(Login.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-                                    Intent intent = new Intent(LogIn.this, MainMenu.class);
+                                    Intent intent = new Intent(Login.this, MainMenu.class);
                                     startActivity(intent);
                                     finish();
                                 }
@@ -140,9 +140,9 @@ public class LogIn extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(LogIn.this, "We have send you instructions to reset your password!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Login.this, "We have send you instructions to reset your password!", Toast.LENGTH_SHORT).show();
                                 } else {
-                                    Toast.makeText(LogIn.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Login.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();
                                 }
 
                                 progressBar1.setVisibility(View.GONE);

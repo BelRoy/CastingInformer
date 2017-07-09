@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LogIn" android:screenOrientation="portrait">
+        <activity android:name=".Login" android:screenOrientation="portrait">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
@@ -22,11 +22,11 @@
 
         <activity
             android:name=".SignUp" android:screenOrientation="portrait"
-            android:parentActivityName=".LogIn">
+            android:parentActivityName=".Login">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".LogIn" />
+                android:value=".Login" />
         </activity>
 
         <activity  android:name=".Profile"    android:label="@string/app_name" android:screenOrientation="portrait"/>
