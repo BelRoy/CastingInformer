@@ -1,7 +1,10 @@
 package com.devqt.casting.infor;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 
 
 public class Profile extends AppCompatActivity {
@@ -12,6 +15,15 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedStateInstance);
         setContentView(R.layout.profile_act);
 
+      //  Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+     //   setSupportActionBar(toolbar);
+
+
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
     }
 
 }

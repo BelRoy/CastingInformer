@@ -1,5 +1,6 @@
 package com.devqt.casting.infor;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -20,7 +21,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 
-public class Login extends AppCompatActivity {
+public class Login extends Activity {
 
     private EditText inputEmail, inputPassword;
     private FirebaseAuth auth;
@@ -32,6 +33,8 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
+
+
         auth = FirebaseAuth.getInstance();
 
         if (auth.getCurrentUser() != null) {
@@ -41,6 +44,7 @@ public class Login extends AppCompatActivity {
 
 
         setContentView(R.layout.log_in);
+
 
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
@@ -154,4 +158,5 @@ public class Login extends AppCompatActivity {
         });
         dialog.show();
     }
+
 }

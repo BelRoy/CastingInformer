@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">M.A.A. - Mobile Actors Agency</string>
+    <string name="app_name">Mobile Actors Agency</string>
     <string name="login">Log in</string>
     <string name="sign_up">Sign Up</string>
     <string name="register">Register</string>
@@ -23,4 +23,6 @@
     <string name="btn_sign_out">Sign Out</string>
     <string name="lbl_forgot_password">Forgot password?</string>
     <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
+    <string name="exit">Exit</string>
+    <string name="prof">Profile</string>
 </resources>

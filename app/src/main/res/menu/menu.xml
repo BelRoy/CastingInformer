@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:sabd="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+
+    <item
+        android:id="@+id/prof"
+        sabd:showAsAction="ifRoom"
+        android:title="@string/prof"
+        android:icon="@drawable/person">
+    </item>
+    <item
+        android:id="@+id/exit"
+        android:icon="@drawable/exit"
+        sabd:showAsAction="ifRoom"
+        android:title="@string/exit">
+    </item>
+
+
+</menu>
