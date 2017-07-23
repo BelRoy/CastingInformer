@@ -25,4 +25,9 @@
     <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
     <string name="exit">Exit</string>
     <string name="prof">Profile</string>
+
+    <string name="cng_pass">Change password</string>
+    <string name="cng_mail">Change e-mail</string>
+    <string name="delete_acc">Delete account</string>
+    <string name="back_out">Back</string>
 </resources>

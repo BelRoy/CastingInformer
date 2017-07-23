@@ -1,10 +1,12 @@
 package com.devqt.casting.infor;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.TextView;
 
 
 public class Profile extends AppCompatActivity {

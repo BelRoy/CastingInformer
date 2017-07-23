@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.devqt.casting.infor.block_menu.ProfileMenu;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -54,11 +55,12 @@ public class MainMenu extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.prof:
-              // Toast.makeText(this, "refresh", Toast.LENGTH_SHORT).show();
+                Intent prof_intent = new Intent(this,ProfileMenu.class);
+                this.startActivity(prof_intent); finish();
                 return true;
             case R.id.exit:
                // Toast.makeText(this, "settings", Toast.LENGTH_SHORT).show();
-                signOut();
+                signOut(); finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
