@@ -30,4 +30,10 @@
     <string name="cng_mail">Change e-mail</string>
     <string name="delete_acc">Delete account</string>
     <string name="back_out">Back</string>
+    <string name="accept">Accept</string>
+
+    <string name="name">Entry You name</string>
+    <string name="surname">Entry You surname</string>
+    <string name="last_name">Entry You last name</string>
+
 </resources>
