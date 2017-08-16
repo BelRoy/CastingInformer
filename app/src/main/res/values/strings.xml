@@ -35,5 +35,6 @@
     <string name="name">Entry You name</string>
     <string name="surname">Entry You surname</string>
     <string name="last_name">Entry You last name</string>
+    <string name="mdy">Dd-Mm-Year</string>
 
 </resources>
