@@ -37,4 +37,7 @@
     <string name="last_name">Entry You last name</string>
     <string name="mdy">Dd-Mm-Year</string>
 
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+
 </resources>
